@@ -19,11 +19,11 @@ def TLE2OE(line1,line2):
     #8    21-32    Epoch (day of the year and fractional portion of the day)    264.51782528 ##three number than decimal then 8 numbers
     Epoach = float(line1[20:32])
     #9    34-43    First Time Derivative of the Mean Motion divided by two [11]    -.00002182
-    DMeanMotion =float(line1[33:43])
+    DMeanMotion = 2 * float(line1[33:43])
     if line1[33]=='-' :
         DMeanMotion =-1*DMeanMotion
     #10 45-52    Second Time Derivative of Mean Motion divided by six (decimal point assumed)    00000-0
-    DDMeanMotion = float(line1[45:50])*10**(-5)
+    DDMeanMotion = 6 * float(line1[45:50])*10**(-5)
     if line1[44]=='-' :
         DDMeanMotion =-1*DDMeanMotion
     if line1[50]=='-' :
@@ -34,7 +34,7 @@ def TLE2OE(line1,line2):
     #11    54-61    BSTAR drag term (decimal point assumed) [11]    -11606-4
     #BStar =float(line1[53:61])
     # self.assertTrue(line1[53]=='-') 
-    BStar = float(line1[54:59])
+    BStar = float(line1[54:59]) * 10**(-5)
     if line1[53]=='-' :
         BStar =-1*BStar
     if line1[59]=='-' :
